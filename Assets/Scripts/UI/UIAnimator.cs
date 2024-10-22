@@ -148,7 +148,15 @@ public static class UIAnimator{
         AttemptPlayFirstQueuedAnimation(animationProfiles);
     }
 
-    public static void UIAnimationFinished(UIAnimationProfile animationProfile){
+    public static void UIAnimationFinished(UIAnimationProfile animationProfile, GameObject animatedGameobject){
+        if(animationProfile.OnAnimationFinishedCallback != null){
+            animationProfile.OnAnimationFinishedCallback?.Invoke();
+        }
+
+        if(animationProfile.DeactivateAfterAnimation && animatedGameobject != null){
+            animatedGameobject.SetActive(false);
+        }
+        
         StopUIAnimationOnRunner(animationProfile.AnimationRunner, animationProfile);
 
         if(!animationDictionary.ContainsKey(animationProfile.AnimationRunner) && animationDictionary[animationProfile.AnimationRunner].Count > 0) return;
@@ -194,15 +202,7 @@ public static class UIAnimator{
 
         transformToAnimate.localScale = _goalScale;
 
-        if(stretchUIAnimationProfile.OnAnimationFinishedCallback != null){
-            stretchUIAnimationProfile.OnAnimationFinishedCallback?.Invoke();
-        }
-
-        if(stretchUIAnimationProfile.DeactivateAfterAnimation){
-            transformToAnimate.gameObject.SetActive(false);
-        }
-
-        UIAnimationFinished(stretchUIAnimationProfile);
+        UIAnimationFinished(stretchUIAnimationProfile, transformToAnimate.gameObject);
     }
 
     // A sin animation that animates a transform local Y position following a sin wave. Can adjust the sin wave with the animationSpeed and animationDistance. 
@@ -229,15 +229,7 @@ public static class UIAnimator{
 
         transformToAnimate.localPosition = new Vector3(transformToAnimate.localPosition.x, sinUIAnimationProfile.YOrigin, transformToAnimate.localPosition.z);
 
-        if(sinUIAnimationProfile.OnAnimationFinishedCallback != null){
-            sinUIAnimationProfile.OnAnimationFinishedCallback?.Invoke();
-        }
-
-        if(sinUIAnimationProfile.DeactivateAfterAnimation){
-            transformToAnimate.gameObject.SetActive(false);
-        }
-
-        UIAnimationFinished(sinUIAnimationProfile);
+        UIAnimationFinished(sinUIAnimationProfile, transformToAnimate.gameObject);
     }
 
     private static float SinAmount(float yOrigin, float sinSpread, float sinIntensity, bool scaledTime = true){
@@ -272,15 +264,7 @@ public static class UIAnimator{
 
         transformToAnimate.localPosition = new Vector3(cosUIAnimationProfile.XOrigin, transformToAnimate.localPosition.y, transformToAnimate.localPosition.z);    
         
-        if(cosUIAnimationProfile.OnAnimationFinishedCallback != null){
-            cosUIAnimationProfile.OnAnimationFinishedCallback?.Invoke();
-        }
-
-        if(cosUIAnimationProfile.DeactivateAfterAnimation){
-            transformToAnimate.gameObject.SetActive(false);
-        }
-
-        UIAnimationFinished(cosUIAnimationProfile);
+        UIAnimationFinished(cosUIAnimationProfile, transformToAnimate.gameObject);
     }
 
     private static float CosAmount(float xOrigin, float cosSpread, float cosIntensity, bool scaledTime = true){
@@ -313,15 +297,7 @@ public static class UIAnimator{
 
         transformToAnimate.localPosition = _goalPosition;
 
-        if(lerpUIAnimationProfile.OnAnimationFinishedCallback != null){
-            lerpUIAnimationProfile.OnAnimationFinishedCallback?.Invoke();
-        }
-
-        if(lerpUIAnimationProfile.DeactivateAfterAnimation){
-            transformToAnimate.gameObject.SetActive(false);
-        }
-
-        UIAnimationFinished(lerpUIAnimationProfile);
+        UIAnimationFinished(lerpUIAnimationProfile, transformToAnimate.gameObject);
     }
    
     /// A lerp animation that lerps a canvas group's alpha value.
@@ -349,15 +325,7 @@ public static class UIAnimator{
 
         canvasGroup.alpha = fadeUIAnimationProfile.AlphaEnd;
 
-        if(fadeUIAnimationProfile.OnAnimationFinishedCallback != null){
-            fadeUIAnimationProfile.OnAnimationFinishedCallback?.Invoke();
-        }
-
-        if(fadeUIAnimationProfile.DeactivateAfterAnimation){
-            canvasGroup.gameObject.SetActive(false);
-        }
-
-        UIAnimationFinished(fadeUIAnimationProfile);
+        UIAnimationFinished(fadeUIAnimationProfile, canvasGroup.gameObject);
     }
 
     /// A animation that lerps a canvas group's alpha value between to values, giving a pulsing effect.
@@ -385,14 +353,6 @@ public static class UIAnimator{
             yield return null;
         }
 
-        if(pulseUIAnimationProfile.OnAnimationFinishedCallback != null){
-            pulseUIAnimationProfile.OnAnimationFinishedCallback?.Invoke();
-        }
-
-        if(pulseUIAnimationProfile.DeactivateAfterAnimation){
-            canvasGroup.gameObject.SetActive(false);
-        }
-
-        UIAnimationFinished(pulseUIAnimationProfile);
+        UIAnimationFinished(pulseUIAnimationProfile, canvasGroup.gameObject);
     }
 }

@@ -43,7 +43,6 @@ public abstract class UIAnimationProfile : ICloneable{
 		return startedAnimation;
 	}
 
-
 	public abstract UIAnimationType GetAnimationType();
 	public abstract bool IsUIReferenced();
 	public abstract Type GetRequiredReferenceType();

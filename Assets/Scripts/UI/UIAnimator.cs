@@ -129,6 +129,8 @@ public static class UIAnimator{
                 break;
             }
         }
+
+        AttemptPlayFirstQueuedAnimation(animationProfiles);
     }
 
     public static void StopUIAnimationOnRunner(MonoBehaviour animationRunner, UIAnimationType animationType){
@@ -142,12 +144,14 @@ public static class UIAnimator{
                 animationProfiles.RemoveAt(i);
             }
         }
+
+        AttemptPlayFirstQueuedAnimation(animationProfiles);
     }
 
     public static void UIAnimationFinished(UIAnimationProfile animationProfile){
         StopUIAnimationOnRunner(animationProfile.AnimationRunner, animationProfile);
 
-        if(!animationDictionary.ContainsKey(animationProfile.AnimationRunner)) return;
+        if(!animationDictionary.ContainsKey(animationProfile.AnimationRunner) && animationDictionary[animationProfile.AnimationRunner].Count > 0) return;
 
         //Attempt to play the next queued animation
         List<UIAnimationProfile> animationProfiles = animationDictionary[animationProfile.AnimationRunner];
@@ -319,7 +323,6 @@ public static class UIAnimator{
 
         UIAnimationFinished(lerpUIAnimationProfile);
     }
-
    
     /// A lerp animation that lerps a canvas group's alpha value.
     public static IEnumerator CanvasGroupAlphaFadeCoroutine(UIAnimationProfile animationProfile){

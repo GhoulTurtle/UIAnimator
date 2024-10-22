@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +10,6 @@ public class UIAnimationController : MonoBehaviour{
 	[SerializeField] private List<Image> buttonImageList;
 	[SerializeField] private Color buttonActivatedColor;
 	[SerializeField] private Color buttonDeactiavtedColor;
-	[SerializeField] private Color activeQueuedAnimationColor;
 
 	[Header("UI Animation References")]
 	[SerializeField] private UIAnimationSO sinAnimation;

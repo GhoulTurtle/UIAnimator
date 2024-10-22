@@ -7,8 +7,6 @@ public class LerpUIAnimationProfile : UIAnimationProfile{
     public Transform AnimatedTransform;
 	public Vector2 GoalPosition;
 
-
-
     public override UIAnimationType GetAnimationType() => UIAnimationType.Lerp;
     public override Type GetRequiredReferenceType(){
         return typeof(Transform);

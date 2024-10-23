@@ -148,7 +148,7 @@ public static class UIAnimator{
         AttemptPlayFirstQueuedAnimation(animationProfiles);
     }
 
-    public static void UIAnimationFinished(UIAnimationProfile animationProfile, GameObject animatedGameobject){
+    private static void UIAnimationFinished(UIAnimationProfile animationProfile, GameObject animatedGameobject){
         if(animationProfile.OnAnimationFinishedCallback != null){
             animationProfile.OnAnimationFinishedCallback?.Invoke();
         }

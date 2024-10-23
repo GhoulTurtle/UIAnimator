@@ -2139,7 +2139,6 @@ MonoBehaviour:
   - {fileID: 430582642}
   buttonActivatedColor: {r: 0.18974723, g: 0.9811321, b: 0.29573625, a: 1}
   buttonDeactiavtedColor: {r: 1, g: 0.2665445, b: 0.25943398, a: 1}
-  activeQueuedAnimationColor: {r: 0.10969208, g: 0.8018868, b: 0.2022132, a: 1}
   sinAnimation: {fileID: 11400000, guid: 37090bbf590bb8a488c9e3aebe3be059, type: 2}
   cosAnimation: {fileID: 11400000, guid: a3237323539de7a46abbf18dfbe58097, type: 2}
   alphaFadeInAnimation: {fileID: 11400000, guid: aa0724ee2fb5b1246ac176d4f99c4c90, type: 2}

@@ -30,8 +30,6 @@ The animations are setup using scriptable objects for easy reusing and consisten
 - System.Collections
 - System.Collections.Generic
 
-//In Progress, all images below are not for this project and are placeholders.
-
 <h2>System Walkthrough:</h2>
 <p align="center">
 Create a new UI animation scriptable object using the create menu: <br/>

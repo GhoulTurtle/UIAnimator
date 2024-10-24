@@ -34,34 +34,34 @@ The animations are setup using scriptable objects for easy reusing and consisten
 
 <h2>System Walkthrough:</h2>
 <p align="center">
-Create a new shape object using the create menu: <br/>
-<img src="https://i.imgur.com/xB3VrTb.png" height="60%" width="60%" alt="UI Animator Steps"/>
+Create a new UI animation scriptable object using the create menu: <br/>
+<img src="https://i.imgur.com/xB3VrTb.png" height="40%" width="40%" alt="UI Animator Steps"/>
 <br />
 <br />
-Fill out the shape object details: <br/>
-<img src="https://i.imgur.com/RyuKheZ.png" height="60%" width="60%" alt="UI Animator Steps"/>
+Fill out the UI animation details: <br/>
+<img src="https://i.imgur.com/RyuKheZ.png" height="50%" width="50%" alt="UI Animator Steps"/>
 <br />
 <br />
-Attach the ObjectSpawner script to a gameobject: <br/>
-<img src="https://i.imgur.com/Jein4TR.png" height="60%" width="60%" alt="UI Animator Steps"/>
+Create your UI script, and attach it to a gameobject: <br/>
+<img src="https://i.imgur.com/Jein4TR.png" height="50%" width="50%" alt="UI Animator Steps"/>
 <br />
 <br />
-Populate the shape object list: <br/>
+Get references to your UI components and UI animation scriptable object: <br/>
 <img src="https://i.imgur.com/Lq02N4h.png" height="60%" width="60%" alt="UI Animator Steps"/>
 <br />
 <br />
-Customize the spawner: <br/>
-<img src="https://i.imgur.com/NpvwaLx.png" height="60%" width="60%" alt="UI Animator Steps"/>
+Use the UIAnimator functions to play animations. Example: <br/>
+<img src="https://i.imgur.com/NpvwaLx.png" height="80%" width="80%" alt="UI Animator Steps"/>
 <br />
 <br />
-The Gizmos in the scene will update according to the spawner area settings: <br/>
+Before: <br/>
 <img src="https://i.imgur.com/Zsdb9gX.png" height="70%" width="70%" alt="UI Animator Steps"/>
 <br />
 <br />
-Press play to start the spawner: <br/>
+After: <br/>
 <img src="https://i.imgur.com/HHZ2FtF.png" height="70%" width="70%" alt="UI Animator Steps"/>
 <br />
 <br />
-The console will update when the spawner has finished: <br/>
+Once the animation is finished the event is called, triggering a message in the console: <br/>
 <img src="https://i.imgur.com/NybH88r.png" height="70%" width="70%" alt="UI Animator Steps"/>
 
